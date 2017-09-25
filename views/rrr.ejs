@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    KOA2 +Mysql
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <style>
+    *{padding:0; margin:0;}
+    #canvas{
+    position: absolute;
+    left: 0;
+    top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <embed src="http://www.rggzs.top/Mark Petrie - Go Time.mp3" autostart="true" loop="-1" controls="ControlPanel" width="0" height="0">
+  <h1>
+      <% if(users == 'null' || users == null ){ %>
+        你还没登录
+      <% }else{ %>
+        <%= users.username %>
+      <% } %>
+  </h1>
+  <p>EJS Welcome to
+      <% if(users == 'null' || users == null ){ %>
+        你还没登录
+      <% }else{ %>
+        <%= users.username %>
+      <% } %>
+  </p>
+  <div>
+    <ul id="bxo1">
+      <li>
+        <label for="">用户名：</label>
+        <input type="text" id="username1">
+      </li>
+      <li>
+        <label for="">密码：</label>
+        <input type="text" id="password1">
+      </li>
+      <li>
+        <button id="btn1">登录</button>
+      </li>
+    </ul>
+
+    <ul id="box2">
+      <li>
+        <label for="">用户名：</label>
+        <input type="text" id="username2">
+      </li>
+      <li>
+        <label for="">密码：</label>
+        <input type="text" id="password2">
+      </li>
+      <li>
+        <button id="btn2">注册</button>
+      </li>
+    </ul>
+    <button id="btn3">退出</button>
+
+  </div>
+
+  
+  <script>
+		
+			//获取画布对象
+			var canvas = document.getElementById("canvas");
+			//获取画布的上下文
+			var context =canvas.getContext("2d");
+      var timers;
+			//获取浏览器屏幕的宽度和高度
+			var W = window.innerWidth;
+			var H = window.innerHeight;
+			//设置canvas的宽度和高度
+			canvas.width = W;
+			canvas.height = H;
+
+     
+			//每个文字的字体大小
+			var fontSize = 16;
+			//计算列
+			var colunms = Math.floor(W /fontSize);	
+			//记录每列文字的y轴坐标
+			var drops = [];
+			//给每一个文字初始化一个起始点的位置
+			for(var i=0;i<colunms;i++){
+				drops.push(0);
+			}
+
+			//运动的文字
+			var str ="KOA2  NODE   MYSQL";
+			//绘画的函数
+			function draw(){
+				context.fillStyle = "rgba(0,0,0,0.05)";
+				context.fillRect(0,0,W,H);
+				//给字体设置样式
+				context.font = "700 "+fontSize+"px  微软雅黑";
+				//给字体添加颜色
+				context.fillStyle ="#00cc33";//可以rgb,hsl, 标准色，十六进制颜色
+				//写入画布中
+				for(var i=0;i<colunms;i++){
+					var index = Math.floor(Math.random() * str.length);
+					var x = i*fontSize;
+					var y = drops[i] *fontSize;
+					context.fillText(str[index],x,y);
+					//如果要改变时间，肯定就是改变每次他的起点
+					if(y >= canvas.height && Math.random() > 0.99){
+						drops[i] = 0;
+					}
+					drops[i]++;
+				}
+			};
+
+			function randColor(){
+				var r = Math.floor(Math.random() * 256);
+				var g = Math.floor(Math.random() * 256);
+				var b = Math.floor(Math.random() * 256);
+				return "rgb("+r+","+g+","+b+")";
+			}
+
+			draw();
+			timers = setInterval(draw,30);
+      
+      window.onresize = function(){
+          clearInterval(timers);
+          var W = window.innerWidth;
+          var H = window.innerHeight;
+          //设置canvas的宽度和高度
+          canvas.width = W;
+          canvas.height = H;
+
+          timers = setInterval(draw,30);
+      }
+  </script>
+
+  <script>
+    /*json转url*/
+    function json2url(json) {
+      var arr = [];
+      for (var name in json) {
+        arr.push(name + '=' + json[name]);
+      }
+      return arr.join('&');
+    }
+
+    function ajaxs(url, method, params) {
+      var params = params || null;
+
+      return new Promise(function (resolve, reject) {
+        var timer = null;
+        var json = {};
+        if (window.XMLHttpRequest) {
+          var oAjax = new XMLHttpRequest();
+        } else {
+          var oAjax = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+
+        switch (method.toUpperCase()) {
+          case 'GET':
+            oAjax.open('GET', url + '?' + json2url(params), true);
+            oAjax.send();
+            break;
+          case 'POST':
+            oAjax.open('POST', url, true);
+            oAjax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            oAjax.send(json2url(params));
+            break;
+        }
+
+        oAjax.onreadystatechange = function () {
+          if (oAjax.readyState == 4) {
+            clearTimeout(timer);
+            if (oAjax.status >= 200 && oAjax.status < 300 || oAjax.status == 304) {
+              json = JSON.parse(oAjax.responseText);
+              resolve(json);
+            } else {
+              json = JSON.parse(oAjax.responseText);
+              reject(json);
+            }
+          }
+        };
+
+        //网络超时
+        if (typeof time != 'undefined') {
+          timer = setTimeout(function () {
+            alert('亲，您的网络不给力！');
+            oAjax.onreadystatechange = null;
+          }, time);
+        }
+      });
+    }
+
+    window.onload = function () {
+
+      var box1 = document.getElementById('box1');
+      var user1 = document.getElementById('username1');
+      var password1 = document.getElementById('password1');
+      var btn1 = document.getElementById('btn1');
+
+      var box2 = document.getElementById('box2');
+      var user2 = document.getElementById('username2');
+      var password2 = document.getElementById('password2');
+      var btn2 = document.getElementById('btn2');
+
+      var btn3 = document.getElementById('btn3');
+
+
+      /*登录*/
+      btn1.onclick = async function () {
+        var params = {
+          username: user1.value,
+          password: password1.value,
+        };
+
+        var res = await ajaxs('/api/users/login', 'POST', params);
+        console.log(res);
+      }
+
+      /*注册*/
+      btn2.onclick = async function () {
+        var params = {
+          username: user2.value,
+          password: password2.value
+        };
+        var res = await ajaxs('/api/users/reg', 'POST', params);
+        console.log(res);
+      }
+
+      /*退出*/
+
+      btn3.onclick= async function(){
+        var res = await ajaxs('/api/users/loginout', 'GET');
+        console.log(res);
+      }
+    }
+  </script>
+</body>
+
+</html>
