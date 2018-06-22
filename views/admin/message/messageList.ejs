@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>消息列表</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="<%= CDNURL %>/static/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
+	<link rel="stylesheet" href="<%= CDNURL %>/static/css/admin/message.css" media="all" />
+</head>
+<body class="childrenBody">
+	<form class="layui-form">
+		<table class="layui-table msg_box" lay-skin="line">
+			<colgroup>
+				<col width="45%">
+				<col width="25%">
+				<col width="15%">
+				<col>
+			</colgroup>
+			<tbody class="msgHtml"></tbody>
+		</table>
+	</form>
+	<script type="text/javascript" src="<%= CDNURL %>/static/layui/layui.js"></script>
+	<script type="text/javascript" src="<%= CDNURL %>/static/page/message/message.js"></script>
+</body>
+</html>

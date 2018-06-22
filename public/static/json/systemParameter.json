@@ -1,0 +1,14 @@
+{
+    "cmsName": "后台管理系统",
+    "version": "v1.0.1",
+    "author": "blog.jczxw.cn",
+    "homePage": "index",
+    "server": "Node Koa2 Mysql",
+    "dataBase": "8.00.2039",
+    "maxUpload": "2M",
+    "userRights": "总管理员",
+    "description": "开发中..",
+    "powerby": "copyright @2017 Blog.jczxw.cn",
+    "record": "京ICP备",
+    "keywords": "cms，模版"
+}

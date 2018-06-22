@@ -9,7 +9,7 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="<%= CDNURL %>/static/layui/css/layui.css" media="all" />
 </head>
 <body class="childrenBody">
 	<form class="layui-form">
@@ -38,8 +38,7 @@
 				<label class="layui-form-label">分类</label>
 				<div class="layui-input-inline">
 					<select name="typeName" class="newsLook" lay-filter="typeName">
-				        <option value="0">NODE</option>
-				        <option value="1">PHP</option>
+				       <option value="0">请选择</option>
 				    </select>
 				</div>
 			</div>
@@ -60,7 +59,7 @@
         <label class="layui-form-label">封面</label>
         <div class="layui-input-inline" style="width: 190px;margin-right: 10px; border:1px solid #dedede;">
             <input id="articleCoverSrc" name="coverImg" type="hidden">
-            <img id="articleCoverImg" style="width:100%; height:auto;" class="img-cover" src="/images/cover_default.jpg" alt="封面">
+            <img id="articleCoverImg" style="width:100%; height:auto;" class="img-cover" src="<%= CDNURL %>/static/images/cover_default.jpg" alt="封面">
         </div>
         <div class="layui-input-inline" style="position: absolute;bottom: 0;">
             <input type="file" name="coverImgs" id="coverImgs" class="layui-upload-file" lay-title="点击上传" lay-ext="jpg|png|bmp">
@@ -74,13 +73,15 @@
 		</div>
 	</form>
 	<script>
+	    var CDNURL = '<%= CDNURL %>';		
+
 		<% if(id == "add"){ %>
 			var ids = 'add';
 		<% }else{ %>
 			var ids = <%= id %>;
 		<% } %>
 	</script>
-	<script type="text/javascript" src="/layui/layui.js"></script>
-	<script type="text/javascript" src="/page/news/newsAdd.js"></script>
+	<script type="text/javascript" src="<%= CDNURL %>/static/layui/layui.js"></script>
+	<script type="text/javascript" src="<%= CDNURL %>/static/page/news/newsAdd.js"></script>
 </body>
 </html>

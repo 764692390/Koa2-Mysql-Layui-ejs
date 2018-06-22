@@ -7,6 +7,7 @@
 const captchapng = require("captchapng"); //验证码
 const multer = require("koa-multer"); //加载koa-multer模块
 const query = require("../db/mysql");
+const request =require("request");
 
 /*生成随机数验证码*/
 let setCode = function() {
@@ -25,7 +26,8 @@ let setCode = function() {
 
 /*文件上传*/
 let upload = function(url) {
-  let urls = url || "public/"; //配置文件存储路径
+  let urls = url || "public/static/"; //配置文件存储路径
+  console.log(9999999999999999);
   //配置
   let storage = multer.diskStorage({
     //文件保存路径
@@ -78,9 +80,28 @@ let Time = function() {
   );
 };
 
+
+/*获取IP*/
+let getIp = function(ctx){
+  return new Promise((resolve, reject) => {
+    let ips = 'x-real-ip';
+    let ip = ctx.headers[ips];
+    request.get('http://ip.taobao.com/service/getIpInfo.php?ip=' + ip, function(error, doce) {
+      if (error) {
+        resolve(error);
+      }else{
+        let data = JSON.parse(doce.body);
+        resolve(data);
+      }
+    });
+  });
+};
+
+
 module.exports = {
   setCode,
   upload,
   UpdataSession,
-  Time
+  Time,
+  getIp
 };

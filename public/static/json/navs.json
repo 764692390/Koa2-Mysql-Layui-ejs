@@ -1,0 +1,59 @@
+[{
+	"title" : "后台首页",
+	"icon" : "icon-computer",
+	"href" : "admin/main",
+	"spread" : false,
+	"authority":"1"
+},
+{
+	"title" : "用户列表",
+	"icon" : "&#xe613",
+	"href" : "admin/user/allUsers",
+	"spread" : false,
+	"authority":"2"
+},{
+	"title" : "文章列表",
+	"icon" : "icon-text",
+	"href" : "admin/news/newsList",
+	"spread" : false,
+	"authority":"1"
+},{
+	"title" : "分类列表",
+	"icon" : "&#xe632;",
+	"href" : "admin/category/categoryList",
+	"spread" : false,
+	"authority":"1"
+},{
+	"title" : "友情链接",
+	"icon" : "&#xe64c;",
+	"href" : "admin/links/linksList",
+	"spread" : false,
+	"authority":"1"
+},{
+	"title" : "消息列表",
+	"icon" : "&#xe63a;",
+	"href" : "admin/message/messageList",
+	"spread" : false,
+	"authority":"1"
+},{
+	"title" : "系统基本参数",
+	"icon" : "&#xe631;",
+	"href" : "admin/systemParameter/systemParameter",
+	"spread" : false,
+	"authority":"2"
+},{
+	"title" : "其他页面",
+	"icon" : "&#xe630;",
+	"href" : "",
+	"spread" : false,
+	"authority":"2",
+	"children" : [
+		{
+			"title" : "404页面",
+			"icon" : "&#xe61c;",
+			"href" : "admin/404",
+			"spread" : false,
+			"authority":"2"
+		}
+	]
+}]

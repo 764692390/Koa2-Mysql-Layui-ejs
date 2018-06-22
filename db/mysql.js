@@ -62,6 +62,6 @@ function InItData() {
 }
 
 /*初始化创建表*/
-//InItData();
+InItData();
 
 module.exports = query;

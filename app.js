@@ -8,14 +8,14 @@ const Koa = require("koa");
 const app = new Koa();
 const router = require("koa-router")();
 const views = require("koa-views");
-const co = require("co");
 const convert = require("koa-convert");
 const json = require("koa-json");
-const onerror = require("koa-onerror");
 const bodyparser = require("koa-bodyparser")();
 const logger = require("koa-logger");
-const session = require("koa-session-redis");
+// const session = require("koa-session-redis");
 const config = require("./config/default");
+const session = require("koa-session2");
+const Store = require("./config/Store.js");
 
 /*把config挂载到app对象上*/
 app.config = config;
@@ -24,6 +24,8 @@ app.config = config;
 const index = require("./routes/index");
 const admin = require("./routes/admin");
 const api = require("./routes/api");
+
+
 
 // middlewares
 app.use(convert(bodyparser));
@@ -37,10 +39,10 @@ app.use(
 );
 
 /*设置session*/
-app.keys = ["some secret hurr"];
+app.keys = ['some secret hurr'];
 app.use(
   session({
-    store: app.config.SessionRedis
+       store: new Store()
   })
 );
 

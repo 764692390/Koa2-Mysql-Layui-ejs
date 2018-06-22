@@ -9,7 +9,7 @@ const query = require("./mysql");
 // 注册用户
 let insertUsers = function(value) {
   let _sql =
-    "insert into users(username,mobile,password,create_time,pic,statu,authority) values (?,?,?,?,?,?,?)";
+    "insert into users(username,mobile,password,create_time,pic,statu,authority,sex,age,nick_name) values (?,?,?,?,?,?,?,?,?,?)";
   return query(_sql, value);
 };
 
@@ -56,6 +56,13 @@ let UpDateNewPassword = function(value) {
   return query(_sql, value);
 };
 
+
+/*删除 批量删除和单个删除 用户 */
+let DelUserAll = function(value) {
+  let _sql = `DELETE FROM users WHERE id=?`;
+  return query(_sql, value);
+};
+
 module.exports = {
   insertUsers,
   findOneUsers,
@@ -64,5 +71,6 @@ module.exports = {
   loginUsers,
   UploadImg,
   UpDateUserMSN,
-  UpDateNewPassword
+  UpDateNewPassword,
+  DelUserAll
 };

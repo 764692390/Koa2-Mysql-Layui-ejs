@@ -54,8 +54,8 @@ let users = `create table if not exists users(
 let articles = `create table if not exists articles(
   id INT NOT NULL AUTO_INCREMENT,  
   title VARCHAR(255) NOT NULL,
-  abstract VARCHAR(255)NOT NULL,
-  content VARCHAR(255) NOT NULL,
+  abstract mediumtext NOT NULL,
+  content mediumtext NOT NULL,
   create_time VARCHAR(255) NOT NULL,
   state VARCHAR(1) NOT NULL,
   stick VARCHAR(1) NOT NULL,
@@ -98,7 +98,6 @@ let links = `create table if not exists links(
 
  /**
   * 【category 分类表】
-  *  category_name = 分类名称值
   *  category_text = 分类文字
   *  create_time = 创建时间
   *  state = 状态
@@ -107,7 +106,6 @@ let links = `create table if not exists links(
 
 let category = `create table if not exists category(
   id INT NOT NULL AUTO_INCREMENT,  
-  category_name VARCHAR(255)NOT NULL,
   category_text VARCHAR(255)NOT NULL,
   create_time VARCHAR(255) NOT NULL,
   state VARCHAR(1) NOT NULL,
@@ -115,4 +113,130 @@ let category = `create table if not exists category(
   PRIMARY KEY ( id )
  )ENGINE=InnoDB DEFAULT CHARSET=utf8;`;
 
-module.exports = [users,articles,links,category];
+
+  /**
+  * 【message 留言板一级表】
+  *  id =主键
+  *  conten = 内容
+  *  UserName = 回复人的用户名
+  *  UserImg  =回复人的用户图像
+  *  openid = 第三方用户唯一id
+  *  ip = 客户端ip
+  *  ip_city = 市 
+  *  ip_ips = ids运营商
+  *  create_time = 创建时间
+  *  state = 状态
+ */
+
+let message = `create table if not exists message(
+  id INT NOT NULL AUTO_INCREMENT,  
+  conten mediumtext NOT NULL,
+  username VARCHAR(255)NOT NULL,
+  userimg VARCHAR(255)NOT NULL,
+  openid VARCHAR(255)NOT NULL,
+  ip VARCHAR(255)NOT NULL,
+  ip_city VARCHAR(255)NOT NULL,
+  ip_ips VARCHAR(255)NOT NULL,
+  create_time VARCHAR(255)NOT NULL, 
+  state VARCHAR(1) NOT NULL,
+  PRIMARY KEY ( id )
+ )ENGINE=InnoDB DEFAULT CHARSET=utf8;`;
+
+  /**
+  * 【message 留言板二级表】
+  *  id =主键
+  *  parentid = 父级id 
+  *  conten = 内容
+  *  UserName = 回复人的用户名
+  *  UserImg  =回复人的用户图像
+  *  openid = 第三方用户唯一id
+  *  ip = 客户端ip
+  *  ip_city = 市 
+  *  ip_ips = ids运营商
+  *  create_time = 创建时间
+  *  state = 状态
+ */
+
+let messageply = `create table if not exists messageply(
+  id INT NOT NULL AUTO_INCREMENT, 
+  parentid VARCHAR(1) NOT NULL, 
+  conten mediumtext NOT NULL,
+  username VARCHAR(255)NOT NULL,
+  userimg VARCHAR(255)NOT NULL,
+  openid VARCHAR(255)NOT NULL,
+  ip VARCHAR(255)NOT NULL,
+  ip_city VARCHAR(255)NOT NULL,
+  ip_ips VARCHAR(255)NOT NULL,
+  create_time VARCHAR(255)NOT NULL, 
+  state VARCHAR(1) NOT NULL,
+  PRIMARY KEY ( id )
+ )ENGINE=InnoDB DEFAULT CHARSET=utf8;`;
+
+
+ /**
+  * 【qquser qq快捷登录表】
+  *  id =主键
+  *  create_time = 创建时间
+  *  state = 状态
+ */
+
+let qquser = `create table if not exists qquser(
+  id INT NOT NULL AUTO_INCREMENT, 
+  ret VARCHAR(255)NOT NULL,
+  msg VARCHAR(255)NOT NULL,
+  is_lost VARCHAR(255)NOT NULL,
+  nickname VARCHAR(255)NOT NULL,
+  gender VARCHAR(255)NOT NULL,
+  province VARCHAR(255)NOT NULL,
+  city VARCHAR(255)NOT NULL,
+  year VARCHAR(255)NOT NULL,
+  figureurl VARCHAR(255)NOT NULL,
+  figureurl_1 VARCHAR(255)NOT NULL,
+  figureurl_2 VARCHAR(255)NOT NULL,
+  figureurl_qq_1 VARCHAR(255)NOT NULL,
+  figureurl_qq_2 VARCHAR(255)NOT NULL,
+  is_yellow_vip VARCHAR(255)NOT NULL,
+  vip VARCHAR(255)NOT NULL,
+  yellow_vip_level VARCHAR(255)NOT NULL,
+  level VARCHAR(255)NOT NULL,
+  is_yellow_year_vip VARCHAR(255)NOT NULL,
+  openid VARCHAR(255)NOT NULL,
+  addtimer VARCHAR(255)NOT NULL,
+  updatatimer VARCHAR(255)NOT NULL,
+  speak VARCHAR(255)NOT NULL,
+  create_time VARCHAR(255)NOT NULL, 
+  state VARCHAR(1) NOT NULL,
+  PRIMARY KEY ( id )
+ )ENGINE=InnoDB DEFAULT CHARSET=utf8;`;
+
+
+
+   /**
+  * 【loginlog 登录日志表】
+  *  id =主键
+ */
+
+let  loginlog = `create table if not exists loginlog(
+  id INT NOT NULL AUTO_INCREMENT, 
+  username VARCHAR(255)NOT NULL,
+  ip VARCHAR(255)NOT NULL,
+  area VARCHAR(255)NOT NULL,
+  area_id VARCHAR(255)NOT NULL,
+  city VARCHAR(255)NOT NULL,
+  city_id VARCHAR(255)NOT NULL,
+  country VARCHAR(255)NOT NULL,
+  country_id VARCHAR(255)NOT NULL,
+  county VARCHAR(255)NOT NULL,
+  county_id VARCHAR(255)NOT NULL,
+  isp VARCHAR(255)NOT NULL,
+  isp_id VARCHAR(255)NOT NULL,
+  region VARCHAR(255)NOT NULL,
+  region_id VARCHAR(255)NOT NULL,
+  create_time VARCHAR(255)NOT NULL, 
+  PRIMARY KEY ( id )
+ )ENGINE=InnoDB DEFAULT CHARSET=utf8;`;
+
+
+ 
+
+module.exports = [users,articles,links,category,message,messageply,qquser,loginlog];

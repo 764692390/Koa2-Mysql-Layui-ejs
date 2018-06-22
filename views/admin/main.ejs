@@ -12,9 +12,9 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="format-detection" content="telephone=no">
   <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/layui/css/layui.css" media="all" />
+  <link rel="stylesheet" href="<%= CDNURL %>/static/layui/css/layui.css" media="all" />
   <link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
-  <link rel="stylesheet" href="/css/admin/main.css" media="all" />
+  <link rel="stylesheet" href="<%= CDNURL %>/static/css/admin/main.css" media="all" />
 </head>
 
 <body class="main_body">
@@ -25,15 +25,7 @@
         <a href="#" class="logo">后台管理系统</a>
         <!-- 显示/隐藏菜单 -->
         <a href="javascript:;" class="iconfont hideMenu icon-menu1"></a>
-        <!-- 搜索 -->
-        <div class="layui-form component">
-          <select name="modules" lay-verify="required" lay-search="">
-						<option value="">直接选择或搜索选择</option>
-						<option value="1">layer</option>
-						<option value="2">form</option>
-			        </select>
-          <i class="layui-icon">&#xe615;</i>
-        </div>
+       
         <!-- 天气信息 -->
         <div class="weather" pc>
           <div id="tp-weather-widget"></div>
@@ -93,7 +85,7 @@
           </li>
           <li class="layui-nav-item" pc>
             <a href="javascript:;">
-							<img src="<%= users.pic %>" class="layui-circle" width="35" height="35">
+							<img src="<%= CDNURL %><%= users.pic %>" class="layui-circle" width="35" height="35">
 							<cite><%= users.username %></cite>
 						</a>
             <dl class="layui-nav-child">
@@ -109,7 +101,7 @@
     <!-- 左侧导航 -->
     <div class="layui-side layui-bg-black">
       <div class="user-photo">
-        <a class="img" title="<%= users.username %>"><img src="<%= users.pic %>"></a>
+        <a class="img" title="<%= users.username %>"><img src="<%= CDNURL %><%= users.pic %>"></a>
         <p>你好！<span class="userName"><%= users.username %></span>, 欢迎登录</p>
       </div>
       <div class="navBar layui-side-scroll"></div>
@@ -139,19 +131,21 @@
     </div>
     <!-- 底部 -->
     <div class="layui-footer footer">
-      <p>copyright @2017 小李Blog
-        <!-- <a onclick="donation()" class="layui-btn layui-btn-danger layui-btn-small">捐赠作者</a> -->
-      </p>
+      <p>copyright @2017 小李Blog</p>
     </div>
   </div>
 
   <!-- 移动导航 -->
   <div class="site-tree-mobile layui-hide"><i class="layui-icon">&#xe602;</i></div>
   <div class="site-mobile-shade"></div>
-
-  <script type="text/javascript" src="/layui/layui.js"></script>
-  <script type="text/javascript" src="/js/admin/leftNav.js"></script>
-  <script type="text/javascript" src="/js/admin/index.js"></script>
+  <script>
+    var CDNURL = '<%= CDNURL %>';
+    var authority = '<%= users.authority %>'; //用户等级
+    
+  </script>
+  <script type="text/javascript" src="<%= CDNURL %>/static/layui/layui.js"></script>
+  <script type="text/javascript" src="<%= CDNURL %>/static/js/admin/leftNav.js"></script>
+  <script type="text/javascript" src="<%= CDNURL %>/static/js/admin/index.js"></script>
 </body>
 
 </html>

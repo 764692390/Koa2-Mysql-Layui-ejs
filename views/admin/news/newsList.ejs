@@ -9,18 +9,12 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="<%= CDNURL %>/static/layui/css/layui.css" media="all" />
 	<link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
-	<link rel="stylesheet" href="/css/admin/news.css" media="all" />
+	<link rel="stylesheet" href="<%= CDNURL %>/static/css/admin/news.css" media="all" />
 </head>
 <body class="childrenBody">
 	<blockquote class="layui-elem-quote news_search">
-		<div class="layui-inline">
-		    <div class="layui-input-inline">
-		    	<input type="text" value="" placeholder="请输入关键字" class="layui-input search_input">
-		    </div>
-		    <a class="layui-btn search_btn">查询</a>
-		</div>
 		<div class="layui-inline">
 			<a class="layui-btn layui-btn-normal newsAdd_btn">添加文章</a>
 		</div>
@@ -56,7 +50,7 @@
 		</table>
 	</div>
 	<div id="page"></div>
-	<script type="text/javascript" src="/layui/layui.js"></script>
-	<script type="text/javascript" src="/page/news/newsList.js"></script>
+	<script type="text/javascript" src="<%= CDNURL %>/static/layui/layui.js"></script>
+	<script type="text/javascript" src="<%= CDNURL %>/static/page/news/newsList.js"></script>
 </body>
 </html>

@@ -1,0 +1,41 @@
+[{
+    "newsId" : "1",
+    "newsName" : "css3用transition实现边框动画效果",
+    "newsAuthor" : "请叫我马哥",
+    "newsStatus" : "审核通过",
+    "newsLook" : "开放浏览",
+    "isShow" : "",
+    "newsTime" : "2017-04-14"
+},{
+    "newsId" : "2",
+    "newsName" : "自定义的模块名称可以包含/吗",
+    "newsAuthor" : "请叫我马哥",
+    "newsStatus" : "待审核",
+    "newsLook" : "开放浏览",
+    "isShow" : "checked",
+    "newsTime" : "2017-04-14"
+},{
+    "newsId" : "3",
+    "newsName" : "layui.tree如何ajax加载二级菜单",
+    "newsAuthor" : "admin",
+    "newsStatus" : "审核通过",
+    "newsLook" : "开放浏览",
+    "isShow" : "checked",
+    "newsTime" : "2017-04-14"
+},{
+    "newsId" : "4",
+    "newsName" : "layui.upload如何带参数？像jq的data:{}那样",
+    "newsAuthor" : "admin",
+    "newsStatus" : "审核通过",
+    "newsLook" : "开放浏览",
+    "isShow" : "checked",
+    "newsTime" : "2017-04-14"
+},{
+    "newsId" : "5",
+    "newsName" : "表单元素长度应该怎么调整才美观",
+    "newsAuthor" : "请叫我马哥",
+    "newsStatus" : "待审核",
+    "newsLook" : "开放浏览",
+    "isShow" : "checked",
+    "newsTime" : "2017-04-14"
+}]
